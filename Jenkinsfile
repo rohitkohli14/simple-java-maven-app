@@ -3,22 +3,22 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Hello Shagun'
+                echo 'Hello PAUL'
             }
         }
         stage('Test') {
             steps {
-                echo 'Hello Shraddha'
+                echo 'Hello SHAGUN'
             }
             post {
                 always {
-                    echo 'Hello Paul'
+                    echo 'Hello SHRADDHA'
                 }
             }
         }
         stage('Deliver') {
             steps {
-                echo 'Bye Rohit'
+                echo 'Bye ROHIT'
             }
         }
     }
