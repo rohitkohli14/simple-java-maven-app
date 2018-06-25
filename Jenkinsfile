@@ -6,22 +6,22 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                echo 'Hello Shagun'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                echo 'Hello Shraddha'
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                    echo 'Hello Paul'
                 }
             }
         }
         stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                echo 'Bye Rohit'
             }
         }
     }
