@@ -3,13 +3,13 @@ pipeline {
 		stages {
 			stage('Build') {
 				steps {
-					sh 'mvn -B -DskipTests clean package'
+					sh 'mvn package'
 										
 				}
 			}		
 			stage('Test') {
 				steps {
-					sh 'mvn test'
+				        java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 				}
 				post {
 					always {
