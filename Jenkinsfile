@@ -9,7 +9,7 @@ pipeline {
 			}		
 			stage('Test') {
 				steps {
-				        java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+				        sh 'java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App'
 				}
 				post {
 					always {
