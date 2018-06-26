@@ -3,14 +3,13 @@ pipeline {
 		stages {
 			stage('Build') {
 				steps {
-					sh 'cd maventest'
-					sh 'mvn package'
+					bat 'mvn package'
 										
 				}
 			}		
 			stage('Test') {
 				steps {
-				        sh 'java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App'
+				        bat 'java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App'
 				}
 				post {
 					always {
@@ -21,7 +20,7 @@ pipeline {
 			}
 			stage('Deliver') { 
 				steps {
-					sh './jenkins/scripts/deliver.sh' 
+					bat './jenkins/scripts/deliver.sh' 
 				}
 			}							
 		}			
