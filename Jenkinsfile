@@ -1,25 +1,27 @@
 pipeline {
     agent any
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Hello PAUL'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Hello SHAGUN'
-            }
-            post {
-                always {
-                    echo 'Hello SHRADDHA'
-                }
-            }
-        }
-        stage('Deliver') {
-            steps {
-                echo 'Bye ROHIT'
-            }
-        }
-    }
-}
+		stages {
+			stage('Build') {
+				steps {
+					sh 'mvn -B -DskipTests clean package'
+										
+				}
+			}		
+			stage('Test') {
+				steps {
+					sh 'mvn test'
+				}
+				post {
+					always {
+						archive "target/**/*"
+						junit 'target/surefire-reports/*.xml'
+					}
+				}
+			}
+			stage('Deliver') { 
+				steps {
+					sh './jenkins/scripts/deliver.sh' 
+				}
+			}							
+		}			
+}	
