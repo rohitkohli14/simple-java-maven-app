@@ -7,16 +7,6 @@ pipeline {
 										
 				}
 			}		
-			stage('Test') {
-				steps {
-					sh 'mvn test'
-				}
-				post {
-					always {
-						archive "target/**/*"
-						junit 'target/surefire-reports/*.xml'
-					}
-				}
 			}
 			stage('Deliver') { 
 				steps {
