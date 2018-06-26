@@ -3,6 +3,7 @@ pipeline {
 		stages {
 			stage('Build') {
 				steps {
+					sh 'cd maventest'
 					sh 'mvn package'
 										
 				}
